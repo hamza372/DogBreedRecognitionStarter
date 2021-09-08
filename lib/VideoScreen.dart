@@ -33,7 +33,7 @@ class _MyHomePageState extends State<VideoScreen> {
       }
       setState(() {
         controller.startImageStream((image) => {
-              if (!isBusy) {isBusy = true, img = image, startImageLabeling()}
+              if (!isBusy) {isBusy = true, img = image, startImageRecognition()}
             });
       });
     });
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<VideoScreen> {
   loadModel() async {}
 
   //TODO perform image classification with loaded model
-  startImageLabeling() async {
+  startImageRecognition() async {
     isBusy = false;
   }
 
@@ -67,29 +67,23 @@ class _MyHomePageState extends State<VideoScreen> {
                   Stack(
                     children: [
                       Center(
-                        child: FlatButton(
-                          padding: EdgeInsets.all(0),
-                          child: Container(
-                            margin: EdgeInsets.only(top: 60),
-                            //   height: 177,
-                            //   width: 310,
-                            child: controller == null
-                                ? Center(
-                                    child: Container(
-                                      width: 140,
-                                      height: 150,
-                                      child: Icon(
-                                        Icons.videocam,
-                                        color: Colors.white,
-                                      ),
+                        child: Container(
+                          margin: EdgeInsets.only(top: 60),
+                          child: controller == null
+                              ? Center(
+                                  child: Container(
+                                    width: 140,
+                                    height: 150,
+                                    child: Icon(
+                                      Icons.videocam,
+                                      color: Colors.white,
                                     ),
-                                  )
-                                : AspectRatio(
-                                    aspectRatio: controller.value.aspectRatio,
-                                    child: CameraPreview(controller),
                                   ),
-                          ),
-                          onPressed: () {},
+                                )
+                              : AspectRatio(
+                                  aspectRatio: controller.value.aspectRatio,
+                                  child: CameraPreview(controller),
+                                ),
                         ),
                       ),
                       Container(
