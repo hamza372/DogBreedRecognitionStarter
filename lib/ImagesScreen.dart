@@ -24,7 +24,7 @@ class _MyHomePageState extends State<ImagesScreen> {
     setState(() {
       _image = File(file.path);
       if (_image != null) {
-        doImageClassification();
+        startImageRecognition();
       }
     });
   }
@@ -34,7 +34,7 @@ class _MyHomePageState extends State<ImagesScreen> {
     setState(() {
       _image = File(file.path);
       if (_image != null) {
-        doImageClassification();
+        startImageRecognition();
       }
     });
   }
@@ -44,7 +44,7 @@ class _MyHomePageState extends State<ImagesScreen> {
   }
 
   //TODO perform image recognition with images
-  doImageClassification() async {
+  startImageRecognition() async {
 
   }
 
